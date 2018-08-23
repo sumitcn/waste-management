@@ -25,7 +25,7 @@ SECRET_KEY = 'z=r=rfmc&%ksq1^u+ulj3jwg+@+xjdc&8=*f=*%pj^=8()7(yq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','drizzlebox.yihf493a4x.ap-south-1.elasticbeanstalk.com']
 
 
 # Application definition
