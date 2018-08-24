@@ -6,6 +6,8 @@ body{
   box-sizing: border-box;
   background-size: cover;
   Overflow-x:hidden;
+  margin-right: auto;
+  margin-left: auto;
   height: 150vh;
   width: auto;
 }
