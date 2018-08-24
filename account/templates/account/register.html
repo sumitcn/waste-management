@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% load staticfiles %}
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Document</title>
@@ -8,7 +9,7 @@
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="register.css">
+	<link rel="stylesheet" href="{% static 'account/css/register.css' %}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
@@ -23,7 +24,7 @@
 			</button>
 			<button class="btn btn-block btn-black">
 				<!-- <i class="fab fa-google-plus-square googleicon"></i> -->
-				<img src="images/googlePng.png" width="24" class="googleicon">
+				<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
 				<span class="h5 googleicontext">SignUp with Google</span> 
 			</button>
 		</div>
@@ -32,9 +33,11 @@
 				<pre class="h4"> --- OR --- </pre>
 			</div>
 		</div>
+		<form action ="{% url 'account:register' %}" method ="POST" >
+			{% csrf_token %}
 		<div class="section-3 animated fadeInLeft">
 			<div class="profile-image">
-				<img src="images/user.png" alt="profile-photo" width="90">
+				<img src="{% static 'account/img/user.png' %}" alt="profile-photo" width="90">
 			</div>
 			<div class="main-form">
 				<div class="header pt-1">
@@ -46,35 +49,36 @@
 						<i class="fas fa-pencil-alt float-right pt-2 penSize"></i>
 					</div>
 				</div>
-				<input type="text" class="form-control" id="user-first" placeholder="First Name">
-				<input type="text" class="form-control" id="user-last" placeholder="Last Name">
-				<input type="text" class="form-control" id="datepicker" placeholder="Date of Birth">
+				<input type="text" class="form-control" name ='first_name' id="user-first" placeholder="First Name">
+				<input type="text" class="form-control" name = 'last_name' id="user-last" placeholder="Last Name">
+				<input type="text" class="form-control" name = 'date_of_birth' id="datepicker" placeholder="Date of Birth">
 				<!-- male female -->
 				<div class="form-group mt-2">
 					<div class="form-check-inline">
 						<label class="form-check-label">
-							<input type="radio" class="form-check-input" name="optradio">Male
+							<input type="radio" class="form-check-input" value ='Male' name="gender">Male
 						</label>
 					</div>
 					<div class="form-check-inline">
 						<label class="form-check-label">
-							<input type="radio" class="form-check-input" name="optradio">Female
+							<input type="radio" class="form-check-input" value='Female' name="gender">Female
 						</label>
 					</div>
 					<div class="form-check-inline">
 						<label class="form-check-label">
-							<input type="radio" class="form-check-input" name="optradio">Other
+							<input type="radio" class="form-check-input" value ='Other' name="gender">Other
 						</label>
 					</div>
 				</div>
 				<!-- gender end -->
-				<input type="email" class="form-control" id="email" placeholder="Email address">
-				<input type="password" class="form-control" id="user-pwd" placeholder="Password">
-				<input type="password" class="form-control" id="user-con-pwd" placeholder="Confirm Password">
+				<input type="email" class="form-control" name ='email' id="email" placeholder="Email address">
+				<input type="password" class="form-control" name ='password1' id="user-pwd" placeholder="Password">
+				<input type="password" class="form-control" name = 'password2' id="user-con-pwd" placeholder="Confirm Password">
 				<button type="submit" class="btn btn-primary btn-block mb-3">Submit
 				</button>
 			</div>
 		</div>
+	</form>
 	</div>
 	<script>
 		$( function() {
