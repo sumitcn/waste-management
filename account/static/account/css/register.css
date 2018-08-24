@@ -5,8 +5,8 @@ body{
   background-repeat: no-repeat;
   box-sizing: border-box;
   background-size: cover;
-  overflow: hidden;
-  height: 130vh;
+  Overflow-x:hidden;
+  height: auto;
   width: auto;
 }
 .container-All{
