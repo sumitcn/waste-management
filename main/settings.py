@@ -120,7 +120,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 AWS_ACCESS_KEY_ID = 'AKIAIE6EU24U6F3E7WKA'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'betabucket123'
@@ -133,7 +132,7 @@ AWS_LOCATION = 'static'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'account/static'),
 ]
-STATIC_URL='static/'
-#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN ,AWS_LOCATION,)
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN ,AWS_LOCATION,)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

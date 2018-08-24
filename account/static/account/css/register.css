@@ -1,12 +1,12 @@
 body{
   font-family: 'HarmoniaSans',Arial!important;
-  background: black;
-  background: linear-gradient(white,#DADADA);
-  background-repeat: repeat;
+  background: white 		;
+  /*background: linear-gradient(white,#DADADA);*/
+  background-repeat: no-repeat;
   box-sizing: border-box;
   background-size: cover;
-  Overflow:hidden;
-  height: auto;
+  Overflow-x:hidden;
+  height: 150vh;
   width: auto;
 }
 .container-All{
