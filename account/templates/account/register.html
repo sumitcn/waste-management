@@ -18,7 +18,17 @@
 <body>
 	<div class="container-All">
 		<!-- section 1 -->
+
 		<div class="section-1 animated fadeInRight">
+		   
+		    {% if form.errors %}
+				<div class="alert alert-danger">
+					
+                      {{ form.email.errors }}
+                      {{form.password2.errors }}
+                      </div>
+                    {% endif %} 
+
 			<button class="btn btn-block btn-black"><i class="fab fa-facebook fbicon"></i>
 				<span class="icontext h5">SignUp With Facebook</span>
 			</button>
@@ -27,6 +37,9 @@
 				<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
 				<span class="h5 googleicontext">SignUp with Google</span> 
 			</button>
+
+        
+
 		</div>
 		<div class="section-2">
 			<div class="toggle-line">
@@ -49,9 +62,9 @@
 						<i class="fas fa-pencil-alt float-right pt-2 penSize"></i>
 					</div>
 				</div>
-				<input type="text" class="form-control" name ='first_name' id="user-first" placeholder="First Name">
-				<input type="text" class="form-control" name = 'last_name' id="user-last" placeholder="Last Name">
-				<input type="text" class="form-control" name = 'date_of_birth' id="datepicker" placeholder="Date of Birth">
+				<input type="text" class="form-control" name ='first_name' id="user-first" placeholder="First Name" required>
+				<input type="text" class="form-control" name = 'last_name' id="user-last" placeholder="Last Name" >
+				<input type="text" class="form-control" name = 'date_of_birth' id="datepicker" placeholder="Date of Birth" required>
 				<!-- male female -->
 				<div class="form-group mt-2">
 					<div class="form-check-inline">
@@ -71,9 +84,12 @@
 					</div>
 				</div>
 				<!-- gender end -->
-				<input type="email" class="form-control" name ='email' id="email" placeholder="Email address">
-				<input type="password" class="form-control" name ='password1' id="user-pwd" placeholder="Password">
-				<input type="password" class="form-control" name = 'password2' id="user-con-pwd" placeholder="Confirm Password">
+				 
+				
+				<input type="email" class="form-control" name ='email' id="email" placeholder="Email address" required>
+				
+				<input type="password" class="form-control" name ='password1' id="user-pwd" placeholder="Password" required>
+				<input type="password" class="form-control" name = 'password2' id="user-con-pwd" placeholder="Confirm Password" required>
 				<button type="submit" class="btn btn-primary btn-block mb-3">Submit
 				</button>
 			</div>

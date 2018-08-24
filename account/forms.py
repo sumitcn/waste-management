@@ -19,7 +19,7 @@ class register(forms.ModelForm):
         email = self.cleaned_data.get('email')
         qs = User.objects.filter(email=email)
         if qs.exists():
-            raise forms.ValidationError("email is taken")
+            raise forms.ValidationError("Email is already registered")
         return email
 
     def clean_password2(self):
