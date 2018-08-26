@@ -77,15 +77,19 @@ i{
 }
 .googleicontext{
 	color: white;
+	text-decoration: none;
 }
 .icontext{
 	color: white;
+	text-decoration: none;
 }
 .icontext:hover{
 	color:#4267B2;
+	text-decoration: none;
 }
 .googleicontext:hover{
 	color: #F24E1E;
+	text-decoration: none;
 }
 .btn-black{
 	background: black;
