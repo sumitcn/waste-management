@@ -11,6 +11,7 @@ class UserManager(BaseUserManager):
         user = self.model(
 
             email=self.normalize_email(email),
+            username=username,
             
 
         )
@@ -33,7 +34,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
 
     email = models.EmailField(max_length=255, unique=True)
-    username = models.CharField(max_length=255)
+    username = models.CharField(max_length=255,unique=True)
     gender_choice = (
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -52,8 +53,8 @@ class User(AbstractBaseUser):
     admin = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
         return self.email

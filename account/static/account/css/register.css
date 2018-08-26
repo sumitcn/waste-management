@@ -1,7 +1,7 @@
 body{
   font-family: 'HarmoniaSans',Arial!important;
-  background: black 		;
-  /*background: linear-gradient(white,#DADADA);*/
+  background: White 		;
+  background: linear-gradient(white,#DADADA);
   background-repeat: repeat;
   box-sizing: border-box;
   background-size: cover;
