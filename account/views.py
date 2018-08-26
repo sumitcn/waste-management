@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .forms import register, sign
 from .models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login ,logout
 
 
 def index(request):
     return render(request, 'account/index.html')
+
+def logoutview(request):
+	logout(request)
+	return render(request, 'account/index.html')
 
 
 def registerview(request):

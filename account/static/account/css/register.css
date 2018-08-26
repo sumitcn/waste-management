@@ -1,11 +1,11 @@
 body{
   font-family: 'HarmoniaSans',Arial!important;
-  background: white 		;
+  background: black 		;
   /*background: linear-gradient(white,#DADADA);*/
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   box-sizing: border-box;
   background-size: cover;
-  Overflow-x:hidden;
+  overflow-x:hidden;
   margin-right: auto;
   margin-left: auto;
   height: 150vh;

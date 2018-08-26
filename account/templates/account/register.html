@@ -30,12 +30,12 @@
                     {% endif %} 
 
 			<button class="btn btn-block btn-black"><i class="fab fa-facebook fbicon"></i>
-				<span class="icontext h5">SignUp With Facebook</span>
+				<span class="icontext h5"><a href = "{% url 'social:begin' 'facebook' %}">SignUp With Facebok</a></span>
 			</button>
 			<button class="btn btn-block btn-black">
 				<!-- <i class="fab fa-google-plus-square googleicon"></i> -->
 				<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
-				<span class="h5 googleicontext">SignUp with Google</span> 
+				<span class="h5 googleicontext"><a href = "{% url 'social:begin' 'google-oauth2'  %}">SignUp with Google</a></span> 
 			</button>
 
         
@@ -50,7 +50,7 @@
 			{% csrf_token %}
 		<div class="section-3 animated fadeInLeft">
 			<div class="profile-image">
-				<img src="{% static 'account/img/user.png' %}" alt="profile-photo" width="90">
+				<img src="{% static 'account/img/user2.png' %}" alt="profile-photo" width="90">
 			</div>
 			<div class="main-form">
 				<div class="header pt-1">
