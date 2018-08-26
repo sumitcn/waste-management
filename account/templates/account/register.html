@@ -29,13 +29,13 @@
                       </div>
                     {% endif %} 
 
-			<button class="btn btn-block btn-black"><i class="fab fa-facebook fbicon"></i>
-				<span class="icontext h5"><a href = "{% url 'social:begin' 'facebook' %}">SignUp With Facebok</a></span>
+			<button class="btn btn-block btn-black"><a href = "{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook fbicon"></i>
+				<span class="icontext h5">SignUp With Facebok</span></a>
 			</button>
-			<button class="btn btn-block btn-black">
+			<button class="btn btn-block btn-black"><a href = "{% url 'social:begin' 'google-oauth2'  %}">
 				<!-- <i class="fab fa-google-plus-square googleicon"></i> -->
 				<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
-				<span class="h5 googleicontext"><a href = "{% url 'social:begin' 'google-oauth2'  %}">SignUp with Google</a></span> 
+				<span class="h5 googleicontext">SignUp with Google</span> </a>
 			</button>
 
         
