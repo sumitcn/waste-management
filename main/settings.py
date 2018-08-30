@@ -24,7 +24,7 @@ SECRET_KEY = 'z=r=rfmc&%ksq1^u+ulj3jwg+@+xjdc&8=*f=*%pj^=8()7(yq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []#'localhost','127.0.0.1','drizzlebox.m5dt39tdts.ap-south-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','drizzlebox.m5dt39tdts.ap-south-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -149,8 +149,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'account/static'),
- ]
+     os.path.join(BASE_DIR, 'account/static'),  ]
 #STATIC_URL='/static/'
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN ,AWS_LOCATION,)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
