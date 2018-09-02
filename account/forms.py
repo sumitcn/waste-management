@@ -11,7 +11,7 @@ class register(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name',
+        fields = ('username','email', 'first_name', 'last_name',
                   'date_of_birth', 'gender')
 
     def clean_email(self):
@@ -32,9 +32,9 @@ class register(forms.ModelForm):
         return password2
 
 
-class sign(forms.Form):
-    email = forms.CharField(label='username')
-    password = forms.CharField(label = 'password')
+class loggedin(forms.Form):
+    username = forms.CharField(label='username')
+    password = forms.CharField(label = 'password' , widget=forms.PasswordInput)
 
 
     def clean_email(self):

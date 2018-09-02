@@ -9,14 +9,14 @@ class UserManager(BaseUserManager):
 
         if not email:
             raise ValueError("Enter the email")
-        # if password is None:
-        #     raise ValueError("Enter the Password")
+        if password is None:
+             raise ValueError("Enter the Password")
         user = self.model(
 
             email=self.normalize_email(email),
 
             username=username ,
-      
+
 
         )
         user.set_password(password or None )

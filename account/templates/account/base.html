@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drizzlebox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+<link rel="stylesheet" href="#">
+<link rel="stylesheet" type="" href="//fonts.googleapis.com/css?family=Tangerine" />
+
+<style >
+		.footer{
+
+			
+		font-size: 33px;  
+   	font-family: 'Tangerine';
+
+</style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">	
+  <a class="navbar-brand" href="#" style ="
+   	font-size: 33px;  
+   	font-family: 'Tangerine';">Drizzlebox</style></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+{% if user.is_authenticated %}
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	
+</div>
+   {{ user.username }}
+</form>
+<form action="{% url 'account:logout' %}">
+	{% csrf_token %}
+<button class="btn btn-danger "" style="margin-left: 10px;"> Logout </button>
+</form>
+
+{% else %}
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	
+</div>
+    <nav class="navbar navbar-light bg-light">
+  <form class="form-inline" action ="{% url 'account:login' %}" method ="POST" >
+  {% csrf_token %}	
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+      </div>
+      <input type="text" class="form-control input-sm" placeholder="Username" name="username" required aria-label="Username"  aria-describedby="basic-addon1" >
+
+      <input type="Password" class="form-control input-sm" placeholder="Password" name="password" required aria-label="Password" style="margin-left: 10px; border-radius: 5px;">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 10px; ">Login</button>
+       
+    </div>
+    
+    
+</form>
+<form action="{% url 'account:register' %}">
+<button class="btn btn-secondary " href="{%url 'account:register' }" style="margin-left: 10px;"> Register </button>
+</form>    
+</nav>
+{% endif %}
+</nav>
+
+</body>
+
+
+</html>
