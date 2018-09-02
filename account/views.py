@@ -1,15 +1,33 @@
 from django.shortcuts import render
-from .forms import register, sign
+from .forms import register, loggedin
 from .models import User
-from django.contrib.auth import authenticate, login ,logout
+from django.contrib.auth import authenticate, login, logout
 
 
-def index(request):
-    return render(request, 'account/index.html')
+def home(request):
+    return render(request,'account/home.html')
+
+def logged(request):
+    form = loggedin(request.POST or None)
+    if form.is_valid():
+        print(form)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            context = {
+                'user': user, }
+            return render(request, 'account/index.html', context)
+        else:
+            return render(request, 'account/index.html')
+    else:
+        return render(request, 'account/login.html', {form: form})
+
 
 def logoutview(request):
-	logout(request)
-	return render(request, 'account/index.html')
+    logout(request)
+    return render(request, 'account/index.html')
 
 
 def registerview(request):
@@ -31,18 +49,5 @@ def registerview(request):
         return render(request, 'account/register.html', {'form': form})
 
 
-def loginview(request):
-    form = sign(request.POST)
-    print(form.errors)
-    if form.is_valid():
-        password = form.cleaned_data['password']
-        email = form.cleaned_data['email']
-        user = authenticate(email=email, password=password)
-        if user is not None:
-            if user.active:
-                login(request, user)
-                context = {
-                    'first_name': user.first_name,
-                    'last_name': user.last_name,
-                }
-                return render(request, 'account/index.html', context)
+def index(request):
+    return render(request, 'account/index.html')

@@ -14,6 +14,7 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 </head>
 <body>
 	<div class="container-All">
@@ -28,15 +29,17 @@
                       {{form.password2.errors }}
                       </div>
                     {% endif %} 
-
-			<button class="btn btn-block btn-black"><a href = "{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook fbicon"></i>
-				<span class="icontext h5">SignUp With Facebok</span></a>
+             
+			<button class="btn btn-block " onclick="location.href='{% url 'social:begin' 'facebook' %}';"><i class="fab fa-facebook fbicon"></i>
+				<span class="icontext h5">SignUp With Facebok</span>
 			</button>
-			<button class="btn btn-block btn-black"><a href = "{% url 'social:begin' 'google-oauth2'  %}">
-				<!-- <i class="fab fa-google-plus-square googleicon"></i> -->
-				<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
-				<span class="h5 googleicontext">SignUp with Google</span> </a>
+	
+			
+			<button class="btn btn-block " onclick="location.href='{% url 'social:begin' 'google-oauth2' %}'; ">
+								<img src="{% static 'account/img/googlePng.png' %}" width="24" class="googleicon">
+				<span class="h5 googleicontext">SignUp with Google</span>
 			</button>
+		
 
         
 
@@ -56,7 +59,7 @@
 				<div class="header pt-1">
 					<div class="form-header">
 
-						<p class="h5">Fill The Form</p>
+						<p class="hello" style="font-family: 'Tangerine';">Drizzlebox</p>
 					</div>
 					<div class="edit-icon">
 						<i class="fas fa-pencil-alt float-right pt-2 penSize"></i>

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from account.models import User
+from account.models import User 
 
 
 class UserAdmin(BaseUserAdmin):
@@ -27,6 +27,5 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ()
-
-
+    
 admin.site.register(User, UserAdmin)
