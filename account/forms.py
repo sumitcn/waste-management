@@ -11,7 +11,7 @@ class register(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name',
+        fields = ('username','email', 'first_name', 'last_name',
                   'date_of_birth', 'gender')
 
     def clean_email(self):

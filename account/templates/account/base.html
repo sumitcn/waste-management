@@ -37,6 +37,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+{% if user.is_authenticated %}
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	
+</div>
+   {{ user.username }}
+</form>
+<form action="{% url 'account:logout' %}">
+	{% csrf_token %}
+<button class="btn btn-danger "" style="margin-left: 10px;"> Logout </button>
+</form>
+
+{% else %}
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	
 </div>
@@ -60,14 +74,8 @@
 <button class="btn btn-secondary " href="{%url 'account:register' }" style="margin-left: 10px;"> Register </button>
 </form>    
 </nav>
+{% endif %}
 </nav>
-
-
-
-
-
-
-
 
 </body>
 

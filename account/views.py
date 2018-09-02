@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 
 
 def home(request):
-    return render(request,'account/home.html')
+    return render(request, 'account/base.html')
+
 
 def logged(request):
     form = loggedin(request.POST or None)
@@ -18,16 +19,16 @@ def logged(request):
             login(request, user)
             context = {
                 'user': user, }
-            return render(request, 'account/index.html', context)
+            return render(request, 'account/base.html', context)
         else:
-            return render(request, 'account/index.html')
+            return render(request, 'account/base.html')
     else:
-        return render(request, 'account/login.html', {form: form})
+        return render(request, 'account/base.html', {form: form})
 
 
 def logoutview(request):
     logout(request)
-    return render(request, 'account/index.html')
+    return render(request, 'account/base.html')
 
 
 def registerview(request):
@@ -41,13 +42,9 @@ def registerview(request):
         user.set_password(password1)
 
         user.save()
-        login(request, user)
-        return render(request, 'account/index.html', {'user': user})
+        #login(request, user)
+        return render(request, 'account/base.html', {'user': user})
 
     else:
 
         return render(request, 'account/register.html', {'form': form})
-
-
-def index(request):
-    return render(request, 'account/index.html')
