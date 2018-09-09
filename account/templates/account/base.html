@@ -22,7 +22,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" type="" href="//fonts.googleapis.com/css?family=Tangerine" />
-
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js">
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
@@ -214,10 +213,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         <button class="btn btn-info "" style=""> Complain </button>
        </form>
 
-</nav>
-<img  height= "800px" width= "1500px"src ="static/account/img/pic2.png">
-
-
+     </nav>
+     <img src = "{%static 'account/img/pic2.png' %}" height ="900" width="1500" >
 {% endif %}
 </nav>
 
@@ -227,7 +224,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 <div id="dustbin" style="height:15px;width:15px;background-color: green;border-radius: 25px;position:relative; left:300px; top:200px;">
   </div>
-<img src="static/account/img/map.png" height="500px" width="1000px"></img>
+<img src=" {%static 'account/img/map.png' %}" height="500px" width="1000px"></img>
 
 
 <script>
@@ -260,7 +257,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       document.getElementById('dustbin').style.backgroundColor = 'yellow' ;
     if (num < 20)
       document.getElementById('dustbin').style.backgroundColor = 'red' ;
-    document.getElementById('details').innerHTML = (100-((data.val()/40) * 100)) + '%' ;
+    document.getElementById('details').innerHTML = (data.val()/40) * 100 + '%' ;
     }
 
 // listen submit form
