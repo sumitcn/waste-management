@@ -257,7 +257,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       document.getElementById('dustbin').style.backgroundColor = 'yellow' ;
     if (num < 20)
       document.getElementById('dustbin').style.backgroundColor = 'red' ;
-    document.getElementById('details').innerHTML = (data.val()/40) * 100 + '%' ;
+    document.getElementById('details').innerHTML =(100-( (data.val()/40) * 100)) + '%' ;
     }
 
 // listen submit form
