@@ -1,8 +1,1 @@
-# drizzlebox
-A music app that connects people.
-
-You can open the application : www.tinyurl.com/drizzlebox
-
-Alert :
- *  Do not commit on Master Branch .
- 
+#Waste-Management System
