@@ -44,7 +44,7 @@ class User(AbstractBaseUser):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
- 
+
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     gender = models.CharField(max_length=7, choices=gender_choice)

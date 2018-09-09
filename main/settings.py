@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'storages',
     'social_django',
+    'waste'
 ]
 
 MIDDLEWARE = [
@@ -150,7 +151,7 @@ AWS_LOCATION = 'static'
 
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, 'account/static'),  ]
-#STATIC_URL='/static/'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN ,AWS_LOCATION,)
+STATIC_URL='/static/'
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN ,AWS_LOCATION,)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

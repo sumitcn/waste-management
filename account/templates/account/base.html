@@ -1,7 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Drizzlebox</title>
+    {% load staticfiles %}
+  <title>waste-portal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -16,7 +19,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
 <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 <link rel="stylesheet" href="#">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" type="" href="//fonts.googleapis.com/css?family=Tangerine" />
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js">
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+      
 
 <style >
 		.footer{
@@ -24,35 +37,155 @@
 			
 		font-size: 33px;  
    	font-family: 'Tangerine';
+   }
+   table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
 
 </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">	
-  <a class="navbar-brand" href="#" style ="
-   	font-size: 33px;  
-   	font-family: 'Tangerine';">Drizzlebox</style></a>
+
+   
+
+
+
+{% if user.is_authenticated %}
+
+    <button class ="btn btn-outline-success my-2 my-sm-0" onclick="document.getElementById('id01').style.display='block' " >Complains</button>
+    <form action= {% url 'account:analysis' %}>
+      {% csrf_token %}
+      <button class ="btn btn-outline-success my-2 my-sm-0 ml-2">Analysis</button>
+      
+    </form>  
+    
+ <a class="navbar-brand" href="#" style ="
+    font-size: 40px;  
+    font-family: 'Tangerine';
+    margin-left: 35%;">Swachh-Jabalpur</style></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-{% if user.is_authenticated %}
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	
+    	      
 </div>
    {{ user.username }}
-</form>
+
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Today's Complains</h2>
+      </header>
+      <div class="w3-container">
+      <table>
+  <tr>
+    <th>Place</th>
+    <th>Subject</th>
+  </tr>
+   {% for i in comp %}
+  <tr onclick="document.getElementById('id02')" >
+        
+         <td> {{ i.dustbin }}</td>
+         <td> {{ i.subject }} </td>
+
+
+    
+</tr>
+<tr id="id02">
+  <td>{{ i.complain }}</td>
+</tr>
+    {% endfor %}
+ </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 <form action="{% url 'account:logout' %}">
 	{% csrf_token %}
 <button class="btn btn-danger "" style="margin-left: 10px;"> Logout </button>
 </form>
 
+
+{% block body %}
+
+
+
+{% endblock %}
+
+
 {% else %}
+  <a class="navbar-brand" href="#" style ="
+    font-size: 33px;  
+    font-family: 'Tangerine';
+    ">Swachh-Jabalpur</style></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+</div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	
+     
 </div>
     <nav class="navbar navbar-light bg-light">
   <form class="form-inline" action ="{% url 'account:login' %}" method ="POST" >
@@ -74,8 +207,86 @@
 <button class="btn btn-secondary " href="{%url 'account:register' }" style="margin-left: 10px;"> Register </button>
 </form>    
 </nav>
+
+<form action="{% url 'waste:complain' %}">
+       {% csrf_token %}
+        <button class="btn btn-info "" style=""> Complain </button>
+       </form>
 {% endif %}
 </nav>
+
+{% if user.is_authenticated %}
+<div id="details" class='alert alert-info' style="height:30px;width:50px;position:relative; left:310px; font-weight: bold; top:220px; font-size:15px" >
+  </div>
+
+<div id="dustbin" style="height:15px;width:15px;background-color: green;border-radius: 25px;position:relative; left:300px; top:200px;">
+  </div>
+<img src="static/account/img/map.png" height="500px" width="1000px"></img>
+
+
+<script>
+
+
+
+
+   // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDPrPYAQr3ZpvRSD4v3ZaGNgLfA00pyzZE",
+    authDomain: "fir-iot-616d2.firebaseapp.com",
+    databaseURL: "https://fir-iot-616d2.firebaseio.com",
+    projectId: "fir-iot-616d2",
+    storageBucket: "fir-iot-616d2.appspot.com",
+    messagingSenderId: "666234619038"
+  };
+  firebase.initializeApp(config);
+
+  var count=0;
+  // var sensorData = firebase.database().ref('dataValue');
+  var retrieveData = firebase.database().ref('Distance');
+  retrieveData.on('value', gotData) ;
+
+  function gotData(data){
+    console.log(data.val());
+    var num = data.val() ;
+    if (num >= 30 && num <= 40)
+      document.getElementById('dustbin').style.backgroundColor = 'green' ;
+    if (num >= 20 && num < 30)
+      document.getElementById('dustbin').style.backgroundColor = 'yellow' ;
+    if (num < 20)
+      document.getElementById('dustbin').style.backgroundColor = 'red' ;
+    document.getElementById('details').innerHTML = (data.val()/40) * 100 + '%' ;
+    }
+
+// listen submit form
+ // document.getElementById('submit').addEventListener('click',submitForm);
+
+ // function submitForm(e) {
+ //   e.preventDefault();
+ //   var name = getInputValue('name');
+ //   var mobileNumber = getInputValue('mobile');
+ //  var user = document.getElementById("details");
+ //   // save data
+ //   saveData(name,mobileNumber);
+ //   count=count+1;
+ //   // retrieve Data
+ //   retrieveData.on('value',gotData);
+ //  console.log(count);
+ //   console.log(name);
+ //   console.log(mobileNumber);
+ //  var division = document.getElementById('details');
+ //    division.innerHTML = name ;
+ // }
+ // function getInputValue(id) {
+ //   return document.getElementById(id).value;
+ // }
+// function saveData(name,mobileNumber){
+//     sensorData.child("Data "+count).set({
+//      name:name,
+//      mobileNumber:mobileNumber
+//      });
+// }
+</script>
+{% endif %}
 
 </body>
 

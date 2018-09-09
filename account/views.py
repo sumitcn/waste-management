@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import register, loggedin
 from .models import User
 from django.contrib.auth import authenticate, login, logout
-
+from waste.models import complainform
 
 def home(request):
     return render(request, 'account/base.html')
@@ -17,8 +17,11 @@ def logged(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            comp = complainform.objects.all()
+            
             context = {
-                'user': user, }
+                'user': user,
+                'comp':comp, }
             return render(request, 'account/base.html', context)
         else:
             return render(request, 'account/base.html')
@@ -48,3 +51,11 @@ def registerview(request):
     else:
 
         return render(request, 'account/register.html', {'form': form})
+
+
+def complains(request):
+    comp = complainform.objects.all()
+    return render(request , 'account/base.html',{'comp':comp})
+
+def analysisview(request):
+    return render(request,'account/analysis.html')
